@@ -167,7 +167,7 @@ namespace ProjetoLojaABC
             this.MaximizeBox = false;
             this.Name = "frmMenuPrincipal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "LojaABC - MenuPrincipal";
+            this.Text = "7";
             this.ResumeLayout(false);
 
         }
