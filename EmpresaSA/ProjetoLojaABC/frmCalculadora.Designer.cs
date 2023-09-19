@@ -35,10 +35,10 @@ namespace ProjetoLojaABC
             this.lblResultado = new System.Windows.Forms.Label();
             this.lblTotal = new System.Windows.Forms.Label();
             this.gpOperador = new System.Windows.Forms.GroupBox();
-            this.rdbAdicao = new System.Windows.Forms.RadioButton();
-            this.rdbSubtracao = new System.Windows.Forms.RadioButton();
-            this.rdbMultiplicacao = new System.Windows.Forms.RadioButton();
             this.rdbDivisao = new System.Windows.Forms.RadioButton();
+            this.rdbMultiplicacao = new System.Windows.Forms.RadioButton();
+            this.rdbSubtracao = new System.Windows.Forms.RadioButton();
+            this.rdbAdicao = new System.Windows.Forms.RadioButton();
             this.btnCalcular = new System.Windows.Forms.Button();
             this.btnLimpar = new System.Windows.Forms.Button();
             this.btnSair = new System.Windows.Forms.Button();
@@ -101,33 +101,19 @@ namespace ProjetoLojaABC
             this.gpOperador.TabStop = false;
             this.gpOperador.Text = "Operador";
             // 
-            // rdbAdicao
+            // rdbDivisao
             // 
-            this.rdbAdicao.AutoSize = true;
-            this.rdbAdicao.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.rdbAdicao.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdbAdicao.Location = new System.Drawing.Point(33, 18);
-            this.rdbAdicao.Name = "rdbAdicao";
-            this.rdbAdicao.Size = new System.Drawing.Size(83, 17);
-            this.rdbAdicao.TabIndex = 3;
-            this.rdbAdicao.TabStop = true;
-            this.rdbAdicao.Text = "Adição (+)";
-            this.rdbAdicao.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            this.rdbAdicao.UseVisualStyleBackColor = true;
-            // 
-            // rdbSubtracao
-            // 
-            this.rdbSubtracao.AutoSize = true;
-            this.rdbSubtracao.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.rdbSubtracao.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdbSubtracao.Location = new System.Drawing.Point(33, 52);
-            this.rdbSubtracao.Name = "rdbSubtracao";
-            this.rdbSubtracao.Size = new System.Drawing.Size(99, 17);
-            this.rdbSubtracao.TabIndex = 4;
-            this.rdbSubtracao.TabStop = true;
-            this.rdbSubtracao.Text = "Subtração (-)";
-            this.rdbSubtracao.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            this.rdbSubtracao.UseVisualStyleBackColor = true;
+            this.rdbDivisao.AutoSize = true;
+            this.rdbDivisao.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.rdbDivisao.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rdbDivisao.Location = new System.Drawing.Point(33, 128);
+            this.rdbDivisao.Name = "rdbDivisao";
+            this.rdbDivisao.Size = new System.Drawing.Size(85, 17);
+            this.rdbDivisao.TabIndex = 6;
+            this.rdbDivisao.TabStop = true;
+            this.rdbDivisao.Text = "Divisão (/)";
+            this.rdbDivisao.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.rdbDivisao.UseVisualStyleBackColor = true;
             // 
             // rdbMultiplicacao
             // 
@@ -143,19 +129,33 @@ namespace ProjetoLojaABC
             this.rdbMultiplicacao.TextAlign = System.Drawing.ContentAlignment.TopRight;
             this.rdbMultiplicacao.UseVisualStyleBackColor = true;
             // 
-            // rdbDivisao
+            // rdbSubtracao
             // 
-            this.rdbDivisao.AutoSize = true;
-            this.rdbDivisao.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.rdbDivisao.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdbDivisao.Location = new System.Drawing.Point(33, 128);
-            this.rdbDivisao.Name = "rdbDivisao";
-            this.rdbDivisao.Size = new System.Drawing.Size(85, 17);
-            this.rdbDivisao.TabIndex = 6;
-            this.rdbDivisao.TabStop = true;
-            this.rdbDivisao.Text = "Divisão (/)";
-            this.rdbDivisao.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            this.rdbDivisao.UseVisualStyleBackColor = true;
+            this.rdbSubtracao.AutoSize = true;
+            this.rdbSubtracao.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.rdbSubtracao.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rdbSubtracao.Location = new System.Drawing.Point(33, 52);
+            this.rdbSubtracao.Name = "rdbSubtracao";
+            this.rdbSubtracao.Size = new System.Drawing.Size(99, 17);
+            this.rdbSubtracao.TabIndex = 4;
+            this.rdbSubtracao.TabStop = true;
+            this.rdbSubtracao.Text = "Subtração (-)";
+            this.rdbSubtracao.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.rdbSubtracao.UseVisualStyleBackColor = true;
+            // 
+            // rdbAdicao
+            // 
+            this.rdbAdicao.AutoSize = true;
+            this.rdbAdicao.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.rdbAdicao.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rdbAdicao.Location = new System.Drawing.Point(33, 18);
+            this.rdbAdicao.Name = "rdbAdicao";
+            this.rdbAdicao.Size = new System.Drawing.Size(83, 17);
+            this.rdbAdicao.TabIndex = 3;
+            this.rdbAdicao.TabStop = true;
+            this.rdbAdicao.Text = "Adição (+)";
+            this.rdbAdicao.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.rdbAdicao.UseVisualStyleBackColor = true;
             // 
             // btnCalcular
             // 
@@ -179,6 +179,7 @@ namespace ProjetoLojaABC
             this.btnLimpar.TabIndex = 8;
             this.btnLimpar.Text = "&Limpar";
             this.btnLimpar.UseVisualStyleBackColor = false;
+            this.btnLimpar.Click += new System.EventHandler(this.btnLimpar_Click);
             // 
             // btnSair
             // 
