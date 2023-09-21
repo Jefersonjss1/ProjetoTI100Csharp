@@ -231,7 +231,7 @@ namespace ProjetoLojaABC
             this.MaximizeBox = false;
             this.Name = "frmCalculadora";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "frmCalculadora";
+            this.Text = "LojaABC - Calculadora";
             this.gpOperador.ResumeLayout(false);
             this.gpOperador.PerformLayout();
             this.ResumeLayout(false);
