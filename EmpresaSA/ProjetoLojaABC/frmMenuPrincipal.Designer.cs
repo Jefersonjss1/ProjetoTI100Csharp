@@ -53,6 +53,7 @@ namespace ProjetoLojaABC
             this.btnFuncionario.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnFuncionario.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnFuncionario.UseVisualStyleBackColor = true;
+            this.btnFuncionario.Click += new System.EventHandler(this.btnFuncionario_Click);
             // 
             // btnUsuario
             // 
@@ -168,6 +169,7 @@ namespace ProjetoLojaABC
             this.Name = "frmMenuPrincipal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "LojaABC - MenuPrincipal";
+            this.Load += new System.EventHandler(this.frmMenuPrincipal_Load);
             this.ResumeLayout(false);
 
         }
