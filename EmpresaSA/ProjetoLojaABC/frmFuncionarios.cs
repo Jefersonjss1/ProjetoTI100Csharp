@@ -13,7 +13,7 @@ namespace ProjetoLojaABC
 {
     public partial class frmFuncionarios : Form
     {
-    //Criando variáveis para controle do menu
+        //Criando variáveis para controle do menu
         const int MF_BYCOMMAND = 0X400;
         [DllImport("user32")]
         static extern int RemoveMenu(IntPtr hMenu, int nPosition, int wFlags);
@@ -25,6 +25,14 @@ namespace ProjetoLojaABC
         {
             InitializeComponent();
             desabilitarCampos();
+        }
+        public frmFuncionarios(string nome)
+        {
+            InitializeComponent();
+            desabilitarCampos();
+            txtNome.Text = nome;
+            //habilitar os campos
+            habilitarCamposAlterar();
         }
 
         private void btnVoltar_Click(object sender, EventArgs e)
@@ -126,6 +134,32 @@ namespace ProjetoLojaABC
 
 
             txtNome.Focus();
+        }//Habilitar campos
+        public void habilitarCamposAlterar()
+        {
+            txtCodigo.Enabled = false;
+            txtNome.Enabled = true;
+            txtEndereco.Enabled = true;
+            txtBairro.Enabled = true;
+            txtCidade.Enabled = true;
+            txtNumero.Enabled = true;
+            txtEmail.Enabled = true;
+            mskCep.Enabled = true;
+            mskCpf.Enabled = true;
+            cbbEstado.Enabled = true;
+            dtpNascimento.Enabled = true;
+
+
+
+            btnCadastrar.Enabled = true;
+            btnAlterar.Enabled = true;
+            btnExcluir.Enabled = true;
+            btnLimpar.Enabled = true;
+            btnNovo.Enabled = false;
+
+
+
+            txtNome.Focus();
         }
 
         private void btnNovo_Click(object sender, EventArgs e)
@@ -135,7 +169,7 @@ namespace ProjetoLojaABC
 
         private void btnCadastrar_Click(object sender, EventArgs e)
         {
-            if (txtNome.Text.Equals("") || txtEmail.Text.Equals("") || txtEndereco.Text.Equals("") || txtEndereco.Text.Equals("") || txtNumero.Text.Equals("") || txtBairro.Text.Equals("") || txtCidade.Text.Equals("") || mskCpf.Text.Equals("   .   .   -") || mskCep.Text.Equals("     -") || cbbEstado.Text.Equals("")) 
+            if (txtNome.Text.Equals("") || txtEmail.Text.Equals("") || txtEndereco.Text.Equals("") || txtEndereco.Text.Equals("") || txtNumero.Text.Equals("") || txtBairro.Text.Equals("") || txtCidade.Text.Equals("") || mskCpf.Text.Equals("   .   .   -") || mskCep.Text.Equals("     -") || cbbEstado.Text.Equals(""))
             {
                 MessageBox.Show("Favor preencher os campos!!!");
             }
@@ -145,7 +179,7 @@ namespace ProjetoLojaABC
                 desabilitarCamposNovo();
                 limparCampos();
             }
-            
+
         }
 
         private void frmFuncionarios_Load(object sender, EventArgs e)
@@ -159,6 +193,44 @@ namespace ProjetoLojaABC
         {
             frmPesquisarFuncionarios abrir = new frmPesquisarFuncionarios();
             abrir.ShowDialog();
+        }
+
+        private void btnAlterar_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Alterado com sucesso!!!.",
+                    "Mensagem do sistema",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information,
+                    MessageBoxDefaultButton.Button1);
+            limparCampos();
+        }
+
+        private void btnExcluir_Click(object sender, EventArgs e)
+        {
+            DialogResult resp = MessageBox.Show("Deseja realmente excluir?",
+                    "Mensagem do sistema",
+                    MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation,
+                    MessageBoxDefaultButton.Button2);
+            if (resp == DialogResult.OK)
+            {
+                limparCampos();
+
+            }
+            else
+            {
+
+            }
+        }
+
+        private void btnCarregaCEP_Click(object sender, EventArgs e)
+        {
+            WSCorreios.AtendeClienteClient ws = new WSCorreios.AtendeClienteClient();
+
+            WSCorreios.enderecoERP endereco = ws.consultaCEP(mskCep.Text);
+
+            txtEndereco.Text = endereco.end;
+            txtBairro.Text = endereco.bairro;
+            txtCidade.Text = endereco.cidade;
+            cbbEstado.Text = endereco.uf;
         }
     }
 }
