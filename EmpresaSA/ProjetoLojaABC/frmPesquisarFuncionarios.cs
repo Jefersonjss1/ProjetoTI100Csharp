@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
+using MySql.Data.MySqlClient;
 
 namespace ProjetoLojaABC
 {
@@ -77,8 +78,61 @@ namespace ProjetoLojaABC
 
         private void btnPesquisar_Click(object sender, EventArgs e)
         {
-            ltbPesquisar.Items.Add(txtDescricao.Text);
+            if (rdbCodigo.Checked)
+            {
+                pesquisaCodigo(Convert.ToInt32(txtDescricao.Text));
+            }
+            if (rdbNome.Checked)
+            {
+                pesquisaNome(txtDescricao.Text); 
+            }
         }
+        //Pesquisar por código
+        public void pesquisaCodigo(int codigo)
+        {
+            MySqlCommand comm = new MySqlCommand();
+            comm.CommandText = "select nome from tbFuncionarios where cod_func = @codigo;";
+            comm.CommandType = CommandType.Text;
+
+            comm.Parameters.Clear();
+            comm.Parameters.Add("@codigo",MySqlDbType.Int32).Value = codigo;
+
+            comm.Connection = Conexao.obterConexao();
+
+            MySqlDataReader DR;
+
+            DR = comm.ExecuteReader();
+            DR.Read();
+
+            ltbPesquisar.Items.Clear();
+
+            ltbPesquisar.Items.Add(DR.GetString(0));
+
+            Conexao.fecharConexao();
+
+        }
+        public void pesquisaNome(string nome)
+        {
+            MySqlCommand comm = new MySqlCommand();
+            comm.CommandText = "select * from tbFuncionarios where nome like '%"+nome+"%';";
+            comm.CommandType = CommandType.Text;
+
+            comm.Parameters.Clear();
+            comm.Parameters.Add("nome", MySqlDbType.VarChar, 100).Value = nome;
+
+            comm.Connection = Conexao.obterConexao();
+            MySqlDataReader DR;
+            DR = comm.ExecuteReader();
+            ltbPesquisar.Items.Clear();
+            while (DR.Read())
+            {
+                ltbPesquisar.Items.Add(DR.GetString(1));
+            }
+
+            Conexao.fecharConexao();
+
+        }
+
 
         private void ltbPesquisar_SelectedIndexChanged(object sender, EventArgs e)
         {
