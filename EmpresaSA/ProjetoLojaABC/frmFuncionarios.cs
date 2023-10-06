@@ -34,6 +34,7 @@ namespace ProjetoLojaABC
             txtNome.Text = nome;
             //habilitar os campos
             habilitarCamposAlterar();
+            carregaFuncionario(nome);
         }
 
         private void btnVoltar_Click(object sender, EventArgs e)
@@ -215,6 +216,34 @@ namespace ProjetoLojaABC
 
             Conexao.fecharConexao();
         }
+        public void carregaFuncionario(string nome)
+        {
+            MySqlCommand comm = new MySqlCommand();
+            comm.CommandText = "select * from tbFuncionarios where nome = @nome";
+            comm.CommandType = CommandType.Text;
+
+            comm.Parameters.Clear();
+            comm.Parameters.Add("@nome", MySqlDbType.VarChar, 100).Value = nome;
+
+            comm.Connection = Conexao.obterConexao();
+            MySqlDataReader DR;
+            DR = comm.ExecuteReader();
+            DR.Read();
+
+            txtCodigo.Text = Convert.ToString(DR.GetInt32(0));
+            txtNome.Text = DR.GetString(1);
+            txtEmail.Text = DR.GetString(2);
+            mskCpf.Text = DR.GetString(3);
+            dtpNascimento.Text = Convert.ToString(DR.GetDateTime(4));
+            txtEndereco.Text = DR.GetString(5);
+            mskCep.Text = DR.GetString(6);
+            txtNumero.Text = DR.GetString(7);
+            txtBairro.Text = DR.GetString(8);
+            cbbEstado.Text = DR.GetString(9);
+            txtCidade.Text = DR.GetString(10);
+
+            Conexao.fecharConexao();
+        }
         private void btnCadastrar_Click(object sender, EventArgs e)
         {
             if (txtNome.Text.Equals("") || txtEmail.Text.Equals("") || txtEndereco.Text.Equals("") || txtEndereco.Text.Equals("") || txtNumero.Text.Equals("") || txtBairro.Text.Equals("") || txtCidade.Text.Equals("") || mskCpf.Text.Equals("   .   .   -") || mskCep.Text.Equals("     -") || cbbEstado.Text.Equals(""))
@@ -248,15 +277,58 @@ namespace ProjetoLojaABC
         {
             frmPesquisarFuncionarios abrir = new frmPesquisarFuncionarios();
             abrir.ShowDialog();
+            this.Hide();
         }
 
         private void btnAlterar_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Alterado com sucesso!!!.",
+            if (alterarFuncionarios(Convert.ToInt32(txtCodigo.Text)) == 1)
+            {
+                MessageBox.Show("Alterado com sucesso!!!.",
                     "Mensagem do sistema",
                     MessageBoxButtons.OK, MessageBoxIcon.Information,
                     MessageBoxDefaultButton.Button1);
-            limparCampos();
+                limparCampos();
+            }
+            else
+            {
+                MessageBox.Show("Erro ao alterar",
+                    "Mensagem do sistema",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error,
+                    MessageBoxDefaultButton.Button1);
+                limparCampos();
+            }
+            
+        }
+
+        //Alterar funcionarios
+        public int alterarFuncionarios(int codigo)
+        {
+            MySqlCommand comm = new MySqlCommand();
+            comm.CommandText = "update tbFuncionarios set nome = @nome, email = @email, cpf = @cpf, d_nasc = @d_nasc, endereco = @endereco, cep = @cep, numero = @numero, bairro = @bairro, estado = @estado, cidade = @cidade where cod_func = @cod_func;";
+            comm.CommandType = CommandType.Text;
+
+            comm.Parameters.Clear();
+
+            comm.Parameters.Add("@nome", MySqlDbType.VarChar, 100).Value = txtNome.Text;
+            comm.Parameters.Add("@email", MySqlDbType.VarChar, 100).Value = txtEmail.Text;
+            comm.Parameters.Add("@cpf", MySqlDbType.VarChar, 14).Value = mskCpf.Text;
+            comm.Parameters.Add("@d_nasc", MySqlDbType.Date).Value = Convert.ToDateTime(dtpNascimento.Text);
+            comm.Parameters.Add("@endereco", MySqlDbType.VarChar, 100).Value = txtEndereco.Text;
+            comm.Parameters.Add("@cep", MySqlDbType.VarChar, 9).Value = mskCep.Text;
+            comm.Parameters.Add("@numero", MySqlDbType.VarChar, 10).Value = txtNumero.Text;
+            comm.Parameters.Add("@bairro", MySqlDbType.VarChar, 100).Value = txtBairro.Text;
+            comm.Parameters.Add("@estado", MySqlDbType.VarChar, 2).Value = cbbEstado.Text;
+            comm.Parameters.Add("@cidade", MySqlDbType.VarChar, 100).Value = txtCidade.Text;
+            comm.Parameters.Add("@cod_func", MySqlDbType.Int32).Value = codigo;
+
+            comm.Connection = Conexao.obterConexao();
+
+            int res = comm.ExecuteNonQuery();
+
+            Conexao.fecharConexao();
+
+            return res;
         }
 
         private void btnExcluir_Click(object sender, EventArgs e)
@@ -267,13 +339,30 @@ namespace ProjetoLojaABC
                     MessageBoxDefaultButton.Button2);
             if (resp == DialogResult.OK)
             {
+                excluirFuncionarios(Convert.ToInt32(txtCodigo.Text));
                 limparCampos();
-
             }
             else
             {
 
             }
+        }
+
+        // Excluir funcionários
+
+        public void excluirFuncionarios(int codigo)
+        {
+            MySqlCommand comm = new MySqlCommand();
+            comm.CommandText = "delete from tbFuncionarios where cod_func = @cod_func;";
+            comm.CommandType = CommandType.Text;
+
+            comm.Parameters.Clear();
+            comm.Parameters.Add("@cod_func", MySqlDbType.Int32).Value = codigo;
+
+            comm.Connection = Conexao.obterConexao();
+            comm.ExecuteNonQuery();
+
+            Conexao.fecharConexao();
         }
 
         private void btnConectar_Click(object sender, EventArgs e)
@@ -328,3 +417,4 @@ namespace ProjetoLojaABC
         }
     }
 }
+    
