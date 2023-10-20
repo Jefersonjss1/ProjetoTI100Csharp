@@ -27,8 +27,11 @@ namespace AlugaMesa
             txtQtd.Enabled = true;
             rdbDisponivel.Enabled = true;
             rdbIndisponivel.Enabled = true;
-
             txtIdMesa.Focus();
+        }
+        //Desabilitar Campos Novo
+        public void desativarCamposNovo() {
+            btnNovo.Enabled = false;
         }
         // Desabilitar Campos
         public void desabilitarCampos()
@@ -42,6 +45,45 @@ namespace AlugaMesa
             txtQtd.Enabled = false;
             rdbDisponivel.Enabled = false;
             rdbIndisponivel.Enabled = false;
+            btnNovo.Enabled = true;
+
+            txtIdMesa.Focus();
+        }
+        // Desabilitar campo de pesquisar
+        public void desabilitarCamposPesquisar()
+        {
+            rdbPesquisarDisponivel.Enabled = false;
+            rdbPesquisarIndisponivel.Enabled = false;
+            ltbPesquisarMesas.Enabled = false;
+            btnPesquisar.Enabled = false;
+        }
+        // Habilitar campo de pesquisar
+        public void habilitarCamposPesquisar()
+        {
+            rdbPesquisarDisponivel.Enabled = true;
+            rdbPesquisarIndisponivel.Enabled = true;
+            ltbPesquisarMesas.Enabled = true;
+            btnPesquisar.Enabled = true;
+
+            txtIdMesa.Focus();
+        }
+        public void habilitarCampoLimpar()
+        {
+            btnLimpar.Enabled = true;
+        }
+        //Habilitar Botão excluir e alterar
+        public void habilitarCamposExcAlt()
+        {
+            btnExcluir.Enabled = true;
+            btnAlterar.Enabled = true;
+
+            txtIdMesa.Focus();
+        }
+        //Desabilitar Botão excluir e alterar
+        public void desabilitarCamposExcAlt()
+        {
+            btnExcluir.Enabled = false;
+            btnAlterar.Enabled = false;
 
             txtIdMesa.Focus();
         }
@@ -58,6 +100,7 @@ namespace AlugaMesa
         private void btnNovo_Click(object sender, EventArgs e)
         {
             habilitarCamposNovo();
+            desabilitarCamposPesquisar();
         }
 
         private void btnVoltar_Click(object sender, EventArgs e)
@@ -70,12 +113,37 @@ namespace AlugaMesa
         private void btnLimpar_Click(object sender, EventArgs e)
         {
             limparCampos();
+            desabilitarCampos();
+            habilitarCamposPesquisar();
         }
 
         private void btnCadastrar_Click(object sender, EventArgs e)
         {
             desabilitarCampos();
             limparCampos();
+            habilitarCamposPesquisar();
+        }
+
+        private void btnAlterar_Click(object sender, EventArgs e)
+        {
+            limparCampos();
+            desabilitarCampos();
+            habilitarCamposPesquisar();
+            
+        }
+
+        private void btnPesquisar_Click(object sender, EventArgs e)
+        {
+            habilitarCamposExcAlt();
+            desativarCamposNovo();
+            habilitarCampoLimpar();
+        }
+
+        private void btnExcluir_Click(object sender, EventArgs e)
+        {
+            limparCampos();
+            desabilitarCampos();
+            habilitarCamposPesquisar();
         }
     }
 }

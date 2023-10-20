@@ -42,16 +42,21 @@ namespace AlugaMesa
             this.txtIdMesa = new System.Windows.Forms.TextBox();
             this.txtQtd = new System.Windows.Forms.TextBox();
             this.gpbStatus = new System.Windows.Forms.GroupBox();
-            this.rdbDisponivel = new System.Windows.Forms.RadioButton();
             this.rdbIndisponivel = new System.Windows.Forms.RadioButton();
+            this.rdbDisponivel = new System.Windows.Forms.RadioButton();
+            this.gpbPesquisarMesas = new System.Windows.Forms.GroupBox();
+            this.rdbPesquisarIndisponivel = new System.Windows.Forms.RadioButton();
+            this.rdbPesquisarDisponivel = new System.Windows.Forms.RadioButton();
+            this.ltbPesquisarMesas = new System.Windows.Forms.ListBox();
             this.gpbStatus.SuspendLayout();
+            this.gpbPesquisarMesas.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnNovo
             // 
             this.btnNovo.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnNovo.Image = ((System.Drawing.Image)(resources.GetObject("btnNovo.Image")));
-            this.btnNovo.Location = new System.Drawing.Point(6, 405);
+            this.btnNovo.Location = new System.Drawing.Point(61, 405);
             this.btnNovo.Name = "btnNovo";
             this.btnNovo.Size = new System.Drawing.Size(105, 50);
             this.btnNovo.TabIndex = 5;
@@ -65,7 +70,7 @@ namespace AlugaMesa
             // 
             this.btnCadastrar.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnCadastrar.Image = ((System.Drawing.Image)(resources.GetObject("btnCadastrar.Image")));
-            this.btnCadastrar.Location = new System.Drawing.Point(117, 405);
+            this.btnCadastrar.Location = new System.Drawing.Point(172, 405);
             this.btnCadastrar.Name = "btnCadastrar";
             this.btnCadastrar.Size = new System.Drawing.Size(105, 50);
             this.btnCadastrar.TabIndex = 6;
@@ -79,7 +84,7 @@ namespace AlugaMesa
             // 
             this.btnAlterar.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnAlterar.Image = ((System.Drawing.Image)(resources.GetObject("btnAlterar.Image")));
-            this.btnAlterar.Location = new System.Drawing.Point(228, 405);
+            this.btnAlterar.Location = new System.Drawing.Point(283, 405);
             this.btnAlterar.Name = "btnAlterar";
             this.btnAlterar.Size = new System.Drawing.Size(105, 50);
             this.btnAlterar.TabIndex = 7;
@@ -87,12 +92,13 @@ namespace AlugaMesa
             this.btnAlterar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnAlterar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnAlterar.UseVisualStyleBackColor = false;
+            this.btnAlterar.Click += new System.EventHandler(this.btnAlterar_Click);
             // 
             // btnExcluir
             // 
             this.btnExcluir.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnExcluir.Image = ((System.Drawing.Image)(resources.GetObject("btnExcluir.Image")));
-            this.btnExcluir.Location = new System.Drawing.Point(339, 405);
+            this.btnExcluir.Location = new System.Drawing.Point(394, 405);
             this.btnExcluir.Name = "btnExcluir";
             this.btnExcluir.Size = new System.Drawing.Size(105, 50);
             this.btnExcluir.TabIndex = 8;
@@ -100,25 +106,27 @@ namespace AlugaMesa
             this.btnExcluir.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnExcluir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnExcluir.UseVisualStyleBackColor = false;
+            this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
             // 
             // btnPesquisar
             // 
             this.btnPesquisar.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnPesquisar.Image = ((System.Drawing.Image)(resources.GetObject("btnPesquisar.Image")));
-            this.btnPesquisar.Location = new System.Drawing.Point(450, 405);
+            this.btnPesquisar.Location = new System.Drawing.Point(132, 56);
             this.btnPesquisar.Name = "btnPesquisar";
-            this.btnPesquisar.Size = new System.Drawing.Size(105, 50);
+            this.btnPesquisar.Size = new System.Drawing.Size(113, 50);
             this.btnPesquisar.TabIndex = 9;
             this.btnPesquisar.Text = "&Pesquisar";
             this.btnPesquisar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnPesquisar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnPesquisar.UseVisualStyleBackColor = false;
+            this.btnPesquisar.Click += new System.EventHandler(this.btnPesquisar_Click);
             // 
             // btnLimpar
             // 
             this.btnLimpar.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnLimpar.Image = ((System.Drawing.Image)(resources.GetObject("btnLimpar.Image")));
-            this.btnLimpar.Location = new System.Drawing.Point(561, 405);
+            this.btnLimpar.Location = new System.Drawing.Point(505, 405);
             this.btnLimpar.Name = "btnLimpar";
             this.btnLimpar.Size = new System.Drawing.Size(105, 50);
             this.btnLimpar.TabIndex = 10;
@@ -132,7 +140,7 @@ namespace AlugaMesa
             // 
             this.btnVoltar.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnVoltar.Image = ((System.Drawing.Image)(resources.GetObject("btnVoltar.Image")));
-            this.btnVoltar.Location = new System.Drawing.Point(672, 405);
+            this.btnVoltar.Location = new System.Drawing.Point(616, 405);
             this.btnVoltar.Name = "btnVoltar";
             this.btnVoltar.Size = new System.Drawing.Size(105, 50);
             this.btnVoltar.TabIndex = 11;
@@ -188,17 +196,6 @@ namespace AlugaMesa
             this.gpbStatus.TabStop = false;
             this.gpbStatus.Text = "Status da Mesa";
             // 
-            // rdbDisponivel
-            // 
-            this.rdbDisponivel.AutoSize = true;
-            this.rdbDisponivel.Location = new System.Drawing.Point(24, 37);
-            this.rdbDisponivel.Name = "rdbDisponivel";
-            this.rdbDisponivel.Size = new System.Drawing.Size(99, 24);
-            this.rdbDisponivel.TabIndex = 3;
-            this.rdbDisponivel.TabStop = true;
-            this.rdbDisponivel.Text = "Disponível";
-            this.rdbDisponivel.UseVisualStyleBackColor = true;
-            // 
             // rdbIndisponivel
             // 
             this.rdbIndisponivel.AutoSize = true;
@@ -210,11 +207,72 @@ namespace AlugaMesa
             this.rdbIndisponivel.Text = "Indisponível";
             this.rdbIndisponivel.UseVisualStyleBackColor = true;
             // 
+            // rdbDisponivel
+            // 
+            this.rdbDisponivel.AutoSize = true;
+            this.rdbDisponivel.Location = new System.Drawing.Point(24, 37);
+            this.rdbDisponivel.Name = "rdbDisponivel";
+            this.rdbDisponivel.Size = new System.Drawing.Size(99, 24);
+            this.rdbDisponivel.TabIndex = 3;
+            this.rdbDisponivel.TabStop = true;
+            this.rdbDisponivel.Text = "Disponível";
+            this.rdbDisponivel.UseVisualStyleBackColor = true;
+            // 
+            // gpbPesquisarMesas
+            // 
+            this.gpbPesquisarMesas.Controls.Add(this.rdbPesquisarIndisponivel);
+            this.gpbPesquisarMesas.Controls.Add(this.rdbPesquisarDisponivel);
+            this.gpbPesquisarMesas.Controls.Add(this.ltbPesquisarMesas);
+            this.gpbPesquisarMesas.Controls.Add(this.btnPesquisar);
+            this.gpbPesquisarMesas.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gpbPesquisarMesas.Location = new System.Drawing.Point(388, 24);
+            this.gpbPesquisarMesas.Name = "gpbPesquisarMesas";
+            this.gpbPesquisarMesas.Size = new System.Drawing.Size(380, 347);
+            this.gpbPesquisarMesas.TabIndex = 45;
+            this.gpbPesquisarMesas.TabStop = false;
+            this.gpbPesquisarMesas.Text = "Pesquisar Mesas";
+            // 
+            // rdbPesquisarIndisponivel
+            // 
+            this.rdbPesquisarIndisponivel.AutoSize = true;
+            this.rdbPesquisarIndisponivel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rdbPesquisarIndisponivel.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.rdbPesquisarIndisponivel.Location = new System.Drawing.Point(255, 30);
+            this.rdbPesquisarIndisponivel.Name = "rdbPesquisarIndisponivel";
+            this.rdbPesquisarIndisponivel.Size = new System.Drawing.Size(110, 24);
+            this.rdbPesquisarIndisponivel.TabIndex = 41;
+            this.rdbPesquisarIndisponivel.TabStop = true;
+            this.rdbPesquisarIndisponivel.Text = "Indisponível";
+            this.rdbPesquisarIndisponivel.UseVisualStyleBackColor = true;
+            // 
+            // rdbPesquisarDisponivel
+            // 
+            this.rdbPesquisarDisponivel.AutoSize = true;
+            this.rdbPesquisarDisponivel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rdbPesquisarDisponivel.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.rdbPesquisarDisponivel.Location = new System.Drawing.Point(22, 30);
+            this.rdbPesquisarDisponivel.Name = "rdbPesquisarDisponivel";
+            this.rdbPesquisarDisponivel.Size = new System.Drawing.Size(99, 24);
+            this.rdbPesquisarDisponivel.TabIndex = 42;
+            this.rdbPesquisarDisponivel.TabStop = true;
+            this.rdbPesquisarDisponivel.Text = "Disponível";
+            this.rdbPesquisarDisponivel.UseVisualStyleBackColor = true;
+            // 
+            // ltbPesquisarMesas
+            // 
+            this.ltbPesquisarMesas.FormattingEnabled = true;
+            this.ltbPesquisarMesas.ItemHeight = 20;
+            this.ltbPesquisarMesas.Location = new System.Drawing.Point(6, 112);
+            this.ltbPesquisarMesas.Name = "ltbPesquisarMesas";
+            this.ltbPesquisarMesas.Size = new System.Drawing.Size(368, 224);
+            this.ltbPesquisarMesas.TabIndex = 43;
+            // 
             // frmCadastrarMesas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(780, 457);
+            this.Controls.Add(this.gpbPesquisarMesas);
             this.Controls.Add(this.gpbStatus);
             this.Controls.Add(this.txtQtd);
             this.Controls.Add(this.txtIdMesa);
@@ -222,7 +280,6 @@ namespace AlugaMesa
             this.Controls.Add(this.lblIdMesa);
             this.Controls.Add(this.btnVoltar);
             this.Controls.Add(this.btnLimpar);
-            this.Controls.Add(this.btnPesquisar);
             this.Controls.Add(this.btnExcluir);
             this.Controls.Add(this.btnAlterar);
             this.Controls.Add(this.btnCadastrar);
@@ -236,6 +293,8 @@ namespace AlugaMesa
             this.TopMost = true;
             this.gpbStatus.ResumeLayout(false);
             this.gpbStatus.PerformLayout();
+            this.gpbPesquisarMesas.ResumeLayout(false);
+            this.gpbPesquisarMesas.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -257,5 +316,9 @@ namespace AlugaMesa
         private System.Windows.Forms.GroupBox gpbStatus;
         private System.Windows.Forms.RadioButton rdbIndisponivel;
         private System.Windows.Forms.RadioButton rdbDisponivel;
+        private System.Windows.Forms.GroupBox gpbPesquisarMesas;
+        private System.Windows.Forms.RadioButton rdbPesquisarIndisponivel;
+        private System.Windows.Forms.RadioButton rdbPesquisarDisponivel;
+        private System.Windows.Forms.ListBox ltbPesquisarMesas;
     }
 }
