@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MySql.Data.MySqlClient;
 
 namespace AlugaMesa
 {
@@ -23,10 +24,10 @@ namespace AlugaMesa
             btnCadastrar.Enabled = true;
             btnLimpar.Enabled = true;
 
-            txtIdMesa.Enabled = true;
+            txtIdMesa.Enabled = false;
             txtQtd.Enabled = true;
-            rdbDisponivel.Enabled = true;
-            rdbIndisponivel.Enabled = true;
+            rdbDisponivel.Enabled = false;
+            rdbIndisponivel.Enabled = false;
             txtIdMesa.Focus();
         }
         //Desabilitar Campos Novo
@@ -95,7 +96,24 @@ namespace AlugaMesa
             rdbDisponivel.Checked = false;
             rdbIndisponivel.Checked = false;
         }
-       
+        // Função de cadastro de mesa
+        public int cadastrarMesa(int idMesa)
+        {
+            MySqlCommand comm = new MySqlCommand();
+            comm.CommandText = "insert into tbMesa(idMesa,qtdCad)values(@idMesa, @qtdCad);";
+            comm.CommandType = CommandType.Text;
+
+            comm.Parameters.Add("@qtdCad", MySqlDbType.Int32).Value = Convert.ToInt32(txtQtd.Text);
+            comm.Parameters.Add("@idMesa", MySqlDbType.Int32).Value = idMesa;
+                
+            comm.Connection = Conexao.obterConexao();
+            int res = comm.ExecuteNonQuery();
+
+            Conexao.fecharConexao();
+            return res;
+        }
+      
+
 
         private void btnNovo_Click(object sender, EventArgs e)
         {
@@ -119,9 +137,26 @@ namespace AlugaMesa
 
         private void btnCadastrar_Click(object sender, EventArgs e)
         {
-            desabilitarCampos();
-            limparCampos();
-            habilitarCamposPesquisar();
+            if (cadastrarMesa(Convert.ToInt32(txtIdMesa.Text)) == 1)
+            {
+                MessageBox.Show("Cadastrado com sucesso!!!",
+                    "Mensagem do Sistema.",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information,
+                    MessageBoxDefaultButton.Button1);
+                limparCampos();
+                desabilitarCampos();
+                habilitarCamposPesquisar();
+            }
+            else
+            {
+                MessageBox.Show("Erro ao Cadastrar!!!",
+                    "Mensagem do Sistema.",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error,
+                    MessageBoxDefaultButton.Button1);
+            }
+            
         }
 
         private void btnAlterar_Click(object sender, EventArgs e)

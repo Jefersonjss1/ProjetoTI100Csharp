@@ -172,6 +172,7 @@ namespace AlugaMesa
             // 
             // txtIdMesa
             // 
+            this.txtIdMesa.Enabled = false;
             this.txtIdMesa.Location = new System.Drawing.Point(233, 43);
             this.txtIdMesa.Name = "txtIdMesa";
             this.txtIdMesa.Size = new System.Drawing.Size(100, 20);
