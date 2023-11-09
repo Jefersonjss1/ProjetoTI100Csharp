@@ -16,7 +16,7 @@ namespace CalcularGorjeta
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmCalcularGorjeta());
+            Application.Run(new frmMenuPrincipal());
         }
     }
 }

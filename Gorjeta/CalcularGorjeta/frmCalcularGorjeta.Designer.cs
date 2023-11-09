@@ -31,6 +31,13 @@ namespace CalcularGorjeta
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCalcularGorjeta));
             this.gpbGorjeta = new System.Windows.Forms.GroupBox();
+            this.cbbIdFunc = new System.Windows.Forms.ComboBox();
+            this.lblCodFunc = new System.Windows.Forms.Label();
+            this.lblNomeFuncionario = new System.Windows.Forms.Label();
+            this.cbbNomeFuncionario = new System.Windows.Forms.ComboBox();
+            this.cbbQualidade = new System.Windows.Forms.ComboBox();
+            this.btnCancelar = new System.Windows.Forms.Button();
+            this.btnLimpar = new System.Windows.Forms.Button();
             this.txtValorTotal = new System.Windows.Forms.TextBox();
             this.lblValorTotal = new System.Windows.Forms.Label();
             this.txtValorGorjeta = new System.Windows.Forms.TextBox();
@@ -39,19 +46,15 @@ namespace CalcularGorjeta
             this.lblQualidade = new System.Windows.Forms.Label();
             this.txtValorConta = new System.Windows.Forms.TextBox();
             this.lblValorConta = new System.Windows.Forms.Label();
-            this.btnLimpar = new System.Windows.Forms.Button();
-            this.btnCancelar = new System.Windows.Forms.Button();
-            this.cbbQualidade = new System.Windows.Forms.ComboBox();
-            this.cbbNomeFuncionario = new System.Windows.Forms.ComboBox();
-            this.lblNomeFuncionario = new System.Windows.Forms.Label();
-            this.lblCodFunc = new System.Windows.Forms.Label();
-            this.txtCodFunc = new System.Windows.Forms.TextBox();
+            this.btnVoltar = new System.Windows.Forms.Button();
+            this.btnSalvar = new System.Windows.Forms.Button();
             this.gpbGorjeta.SuspendLayout();
             this.SuspendLayout();
             // 
             // gpbGorjeta
             // 
-            this.gpbGorjeta.Controls.Add(this.txtCodFunc);
+            this.gpbGorjeta.Controls.Add(this.btnSalvar);
+            this.gpbGorjeta.Controls.Add(this.cbbIdFunc);
             this.gpbGorjeta.Controls.Add(this.lblCodFunc);
             this.gpbGorjeta.Controls.Add(this.lblNomeFuncionario);
             this.gpbGorjeta.Controls.Add(this.cbbNomeFuncionario);
@@ -73,6 +76,97 @@ namespace CalcularGorjeta
             this.gpbGorjeta.TabIndex = 0;
             this.gpbGorjeta.TabStop = false;
             this.gpbGorjeta.Text = "Calculadora de Gorjeta";
+            // 
+            // cbbIdFunc
+            // 
+            this.cbbIdFunc.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbbIdFunc.FormattingEnabled = true;
+            this.cbbIdFunc.Items.AddRange(new object[] {
+            "Jeferson",
+            "Jhonatan",
+            "Ryan",
+            "Allan",
+            "Marcos",
+            "Jefferson"});
+            this.cbbIdFunc.Location = new System.Drawing.Point(512, 33);
+            this.cbbIdFunc.Name = "cbbIdFunc";
+            this.cbbIdFunc.Size = new System.Drawing.Size(90, 28);
+            this.cbbIdFunc.TabIndex = 19;
+            // 
+            // lblCodFunc
+            // 
+            this.lblCodFunc.AutoSize = true;
+            this.lblCodFunc.Location = new System.Drawing.Point(340, 36);
+            this.lblCodFunc.Name = "lblCodFunc";
+            this.lblCodFunc.Size = new System.Drawing.Size(172, 20);
+            this.lblCodFunc.TabIndex = 18;
+            this.lblCodFunc.Text = "Código do Funcionário:";
+            // 
+            // lblNomeFuncionario
+            // 
+            this.lblNomeFuncionario.AutoSize = true;
+            this.lblNomeFuncionario.Location = new System.Drawing.Point(21, 36);
+            this.lblNomeFuncionario.Name = "lblNomeFuncionario";
+            this.lblNomeFuncionario.Size = new System.Drawing.Size(164, 20);
+            this.lblNomeFuncionario.TabIndex = 17;
+            this.lblNomeFuncionario.Text = "Nome do Funcionário:";
+            // 
+            // cbbNomeFuncionario
+            // 
+            this.cbbNomeFuncionario.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbbNomeFuncionario.FormattingEnabled = true;
+            this.cbbNomeFuncionario.Items.AddRange(new object[] {
+            "Jeferson",
+            "Jhonatan",
+            "Ryan",
+            "Allan",
+            "Marcos",
+            "Jefferson"});
+            this.cbbNomeFuncionario.Location = new System.Drawing.Point(191, 33);
+            this.cbbNomeFuncionario.Name = "cbbNomeFuncionario";
+            this.cbbNomeFuncionario.Size = new System.Drawing.Size(134, 28);
+            this.cbbNomeFuncionario.TabIndex = 16;
+            this.cbbNomeFuncionario.SelectedIndexChanged += new System.EventHandler(this.cbbNomeFuncionario_SelectedIndexChanged);
+            // 
+            // cbbQualidade
+            // 
+            this.cbbQualidade.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbbQualidade.FormattingEnabled = true;
+            this.cbbQualidade.Items.AddRange(new object[] {
+            "Excelente - 10%",
+            "Ótimo - 8%",
+            "Bom - 5%",
+            "Ruim - 2%"});
+            this.cbbQualidade.Location = new System.Drawing.Point(25, 160);
+            this.cbbQualidade.Name = "cbbQualidade";
+            this.cbbQualidade.Size = new System.Drawing.Size(555, 28);
+            this.cbbQualidade.TabIndex = 15;
+            // 
+            // btnCancelar
+            // 
+            this.btnCancelar.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.btnCancelar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCancelar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnCancelar.Location = new System.Drawing.Point(357, 418);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(223, 35);
+            this.btnCancelar.TabIndex = 14;
+            this.btnCancelar.Text = "Cancelar";
+            this.btnCancelar.UseVisualStyleBackColor = false;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
+            // 
+            // btnLimpar
+            // 
+            this.btnLimpar.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.btnLimpar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnLimpar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnLimpar.Location = new System.Drawing.Point(25, 418);
+            this.btnLimpar.Name = "btnLimpar";
+            this.btnLimpar.Size = new System.Drawing.Size(223, 35);
+            this.btnLimpar.TabIndex = 13;
+            this.btnLimpar.Text = "Limpar";
+            this.btnLimpar.UseVisualStyleBackColor = false;
+            this.btnLimpar.Click += new System.EventHandler(this.btnLimpar_Click);
             // 
             // txtValorTotal
             // 
@@ -113,7 +207,7 @@ namespace CalcularGorjeta
             this.btnCalcularGorjeta.BackColor = System.Drawing.SystemColors.MenuHighlight;
             this.btnCalcularGorjeta.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnCalcularGorjeta.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnCalcularGorjeta.Location = new System.Drawing.Point(188, 245);
+            this.btnCalcularGorjeta.Location = new System.Drawing.Point(357, 237);
             this.btnCalcularGorjeta.Name = "btnCalcularGorjeta";
             this.btnCalcularGorjeta.Size = new System.Drawing.Size(223, 35);
             this.btnCalcularGorjeta.TabIndex = 8;
@@ -124,7 +218,7 @@ namespace CalcularGorjeta
             // lblQualidade
             // 
             this.lblQualidade.AutoSize = true;
-            this.lblQualidade.Location = new System.Drawing.Point(21, 172);
+            this.lblQualidade.Location = new System.Drawing.Point(21, 137);
             this.lblQualidade.Name = "lblQualidade";
             this.lblQualidade.Size = new System.Drawing.Size(160, 20);
             this.lblQualidade.TabIndex = 6;
@@ -146,92 +240,38 @@ namespace CalcularGorjeta
             this.lblValorConta.TabIndex = 0;
             this.lblValorConta.Text = "Valor da conta:";
             // 
-            // btnLimpar
+            // btnVoltar
             // 
-            this.btnLimpar.BackColor = System.Drawing.SystemColors.MenuHighlight;
-            this.btnLimpar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnLimpar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnLimpar.Location = new System.Drawing.Point(25, 418);
-            this.btnLimpar.Name = "btnLimpar";
-            this.btnLimpar.Size = new System.Drawing.Size(223, 35);
-            this.btnLimpar.TabIndex = 13;
-            this.btnLimpar.Text = "Limpar";
-            this.btnLimpar.UseVisualStyleBackColor = false;
-            this.btnLimpar.Click += new System.EventHandler(this.btnLimpar_Click);
+            this.btnVoltar.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.btnVoltar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnVoltar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnVoltar.Location = new System.Drawing.Point(686, 517);
+            this.btnVoltar.Name = "btnVoltar";
+            this.btnVoltar.Size = new System.Drawing.Size(94, 42);
+            this.btnVoltar.TabIndex = 20;
+            this.btnVoltar.Text = "Voltar";
+            this.btnVoltar.UseVisualStyleBackColor = false;
+            this.btnVoltar.Click += new System.EventHandler(this.btnVoltar_Click);
             // 
-            // btnCancelar
+            // btnSalvar
             // 
-            this.btnCancelar.BackColor = System.Drawing.SystemColors.MenuHighlight;
-            this.btnCancelar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnCancelar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnCancelar.Location = new System.Drawing.Point(357, 418);
-            this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(223, 35);
-            this.btnCancelar.TabIndex = 14;
-            this.btnCancelar.Text = "Cancelar";
-            this.btnCancelar.UseVisualStyleBackColor = false;
-            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
-            // 
-            // cbbQualidade
-            // 
-            this.cbbQualidade.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbbQualidade.FormattingEnabled = true;
-            this.cbbQualidade.Items.AddRange(new object[] {
-            "Excelente - 10%",
-            "Ótimo - 8%",
-            "Bom - 5%",
-            "Ruim - 2%"});
-            this.cbbQualidade.Location = new System.Drawing.Point(25, 195);
-            this.cbbQualidade.Name = "cbbQualidade";
-            this.cbbQualidade.Size = new System.Drawing.Size(555, 28);
-            this.cbbQualidade.TabIndex = 15;
-            // 
-            // cbbNomeFuncionario
-            // 
-            this.cbbNomeFuncionario.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbbNomeFuncionario.FormattingEnabled = true;
-            this.cbbNomeFuncionario.Items.AddRange(new object[] {
-            "Jeferson",
-            "Jhonatan",
-            "Ryan",
-            "Allan",
-            "Marcos",
-            "Jefferson"});
-            this.cbbNomeFuncionario.Location = new System.Drawing.Point(191, 33);
-            this.cbbNomeFuncionario.Name = "cbbNomeFuncionario";
-            this.cbbNomeFuncionario.Size = new System.Drawing.Size(134, 28);
-            this.cbbNomeFuncionario.TabIndex = 16;
-            // 
-            // lblNomeFuncionario
-            // 
-            this.lblNomeFuncionario.AutoSize = true;
-            this.lblNomeFuncionario.Location = new System.Drawing.Point(21, 36);
-            this.lblNomeFuncionario.Name = "lblNomeFuncionario";
-            this.lblNomeFuncionario.Size = new System.Drawing.Size(164, 20);
-            this.lblNomeFuncionario.TabIndex = 17;
-            this.lblNomeFuncionario.Text = "Nome do Funcionário:";
-            // 
-            // lblCodFunc
-            // 
-            this.lblCodFunc.AutoSize = true;
-            this.lblCodFunc.Location = new System.Drawing.Point(340, 36);
-            this.lblCodFunc.Name = "lblCodFunc";
-            this.lblCodFunc.Size = new System.Drawing.Size(172, 20);
-            this.lblCodFunc.TabIndex = 18;
-            this.lblCodFunc.Text = "Código do Funcionário:";
-            // 
-            // txtCodFunc
-            // 
-            this.txtCodFunc.Location = new System.Drawing.Point(511, 33);
-            this.txtCodFunc.Name = "txtCodFunc";
-            this.txtCodFunc.Size = new System.Drawing.Size(69, 26);
-            this.txtCodFunc.TabIndex = 19;
+            this.btnSalvar.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.btnSalvar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnSalvar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnSalvar.Location = new System.Drawing.Point(25, 237);
+            this.btnSalvar.Name = "btnSalvar";
+            this.btnSalvar.Size = new System.Drawing.Size(223, 35);
+            this.btnSalvar.TabIndex = 20;
+            this.btnSalvar.Text = "Salvar";
+            this.btnSalvar.UseVisualStyleBackColor = false;
+            this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
             // 
             // frmCalcularGorjeta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(780, 557);
+            this.Controls.Add(this.btnVoltar);
             this.Controls.Add(this.gpbGorjeta);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -260,9 +300,11 @@ namespace CalcularGorjeta
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.ComboBox cbbQualidade;
         private System.Windows.Forms.ComboBox cbbNomeFuncionario;
-        private System.Windows.Forms.TextBox txtCodFunc;
         private System.Windows.Forms.Label lblCodFunc;
         private System.Windows.Forms.Label lblNomeFuncionario;
+        private System.Windows.Forms.ComboBox cbbIdFunc;
+        private System.Windows.Forms.Button btnVoltar;
+        private System.Windows.Forms.Button btnSalvar;
     }
 }
 
