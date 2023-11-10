@@ -19,7 +19,7 @@ namespace CalcularGorjeta
 
         private void btnCadastrar_Click(object sender, EventArgs e)
         {
-            frmCadastrarFuncionaris abrir = new frmCadastrarFuncionaris();
+            frmCadastrarFuncionarios abrir = new frmCadastrarFuncionarios();
             abrir.Show();
             this.Hide();
         }

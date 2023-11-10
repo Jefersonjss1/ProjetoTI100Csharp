@@ -31,5 +31,6 @@ C:\Users\jeferson.jcaraujo\Documents\Visual Studio 2019\ProjetoTI110\Gorjeta\Cal
 C:\Users\jeferson.jcaraujo\Documents\Visual Studio 2019\ProjetoTI110\Gorjeta\CalcularGorjeta\bin\Debug\System.Numerics.Vectors.xml
 C:\Users\jeferson.jcaraujo\Documents\Visual Studio 2019\ProjetoTI110\Gorjeta\CalcularGorjeta\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
 C:\Users\jeferson.jcaraujo\Documents\Visual Studio 2019\ProjetoTI110\Gorjeta\CalcularGorjeta\obj\Debug\CalcularGorjeta.csproj.CopyComplete
-C:\Users\jeferson.jcaraujo\Documents\Visual Studio 2019\ProjetoTI110\Gorjeta\CalcularGorjeta\obj\Debug\CalcularGorjeta.frmCadastrarFuncionaris.resources
 C:\Users\jeferson.jcaraujo\Documents\Visual Studio 2019\ProjetoTI110\Gorjeta\CalcularGorjeta\obj\Debug\CalcularGorjeta.frmMenuPrincipal.resources
+C:\Users\jeferson.jcaraujo\Documents\Visual Studio 2019\ProjetoTI110\Gorjeta\CalcularGorjeta\obj\Debug\CalcularGorjeta.frmPesquisar.resources
+C:\Users\jeferson.jcaraujo\Documents\Visual Studio 2019\ProjetoTI110\Gorjeta\CalcularGorjeta\obj\Debug\CalcularGorjeta.frmCadastrarFuncionarios.resources

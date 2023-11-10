@@ -84,11 +84,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="frmCadastrarFuncionaris.cs">
+    <Compile Include="frmCadastrarFuncionarios.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmCadastrarFuncionaris.Designer.cs">
-      <DependentUpon>frmCadastrarFuncionaris.cs</DependentUpon>
+    <Compile Include="frmCadastrarFuncionarios.Designer.cs">
+      <DependentUpon>frmCadastrarFuncionarios.cs</DependentUpon>
     </Compile>
     <Compile Include="Conexao.cs" />
     <Compile Include="frmCalcularGorjeta.cs">
@@ -103,16 +103,25 @@
     <Compile Include="frmMenuPrincipal.Designer.cs">
       <DependentUpon>frmMenuPrincipal.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmPesquisar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPesquisar.Designer.cs">
+      <DependentUpon>frmPesquisar.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="frmCadastrarFuncionaris.resx">
-      <DependentUpon>frmCadastrarFuncionaris.cs</DependentUpon>
+    <EmbeddedResource Include="frmCadastrarFuncionarios.resx">
+      <DependentUpon>frmCadastrarFuncionarios.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmCalcularGorjeta.resx">
       <DependentUpon>frmCalcularGorjeta.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmMenuPrincipal.resx">
       <DependentUpon>frmMenuPrincipal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPesquisar.resx">
+      <DependentUpon>frmPesquisar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
