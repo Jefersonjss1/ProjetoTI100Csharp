@@ -61,14 +61,6 @@ namespace CalcularGorjeta
             Conexao.fecharConexao();
 
         }
-        public void alterarFuncionarios()
-        {
-            MySqlCommand comm = new MySqlCommand();
-            comm.CommandText = "";
-            comm.CommandType = CommandType.Text;
-
-
-        }
         private void btnVoltar_Click(object sender, EventArgs e)
         {
             frmCadastrarFuncionarios abrir = new frmCadastrarFuncionarios();
